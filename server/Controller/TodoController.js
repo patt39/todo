@@ -92,19 +92,19 @@ const statusChange = async (req, res) => {
 
     try {
 
-        const faq = await models.faq.findOne({ where: { slugin: req.params.slugin } });
-        if (!faq) {
-            return res.status(400).json({ message: "FAQ don't exist" });
+        const todo = await models.todo.findOne({ where: { slug: req.params.slug } });
+        if (!todo) {
+            return res.status(400).json({ message: "This task doesn't exist" });
         }
 
-        const dataUpdate = { status: !faq.status }
+        const dataUpdate = { status: !todo.status }
 
-        await faq.update(dataUpdate)
+        await todo.update(dataUpdate)
         
-        res.status(200).json({ faq });
+        res.status(200).json({ todo });
     } catch (error) {
         res.status(500).json({
-            message: "Identifiant incorrect",
+            message: "Something went wrong",
             error: error,
         });
     }

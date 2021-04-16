@@ -6,7 +6,7 @@ const PORT = process.env.PORT || '8000';
 
 const server = http.createServer(app)
 
-if (process.env.NODE_ENV !== "development") {
+if (process.env.NODE_ENV === "development") {
   server.listen(PORT, () => {
     console.log(`Local: ${process.env.NODE_APP_URL}:${PORT}`);
     console.log('*************************************\n');

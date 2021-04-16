@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Provider } from 'react-redux'
+import RouteUser from "./routes/todos";
+import {BrowserRouter, Route} from "react-router-dom"
+import { store } from './redux/storeConfig/Store'
 import reportWebVitals from './reportWebVitals';
 
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+       <Route component={RouteUser} />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
